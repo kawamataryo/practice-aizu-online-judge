@@ -9,13 +9,11 @@ def calc(a, b, op)
 end
 
 def func
-  loop do
     a, op, b = gets.split
-    break if op == '?'
-
     a, b = [a, b].map(&:to_i)
     puts calc(a, b, op)
-  end
+    return if op == '?'
+    func
 end
 
 describe 'sample' do
