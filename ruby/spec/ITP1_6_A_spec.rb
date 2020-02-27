@@ -1,32 +1,21 @@
 # frozen_string_literal: true
 
 def func
-  n = gets.to_i
-  result = []
-  1.upto n do |i|
-    if i % 3 == 0
-      result.push(i)
-      next
-    end
-    if i.to_s.match /.*3.*/
-      result.push(i)
-      next
-    end
-  end
-
-  puts result.join(' ')
+  _n = gets
+  puts gets.split.map(&:to_i).reverse.join(" ")
 end
 
 describe 'sample' do
   let(:stdin) do
     <<~EOF
-      30
+      8
+      3 3 4 4 5 8 7 9
     EOF
   end
 
   let(:result) do
     <<~EOF
-      3 6 9 12 13 15 18 21 23 24 27 30
+      9 7 8 5 4 4 3 3
     EOF
   end
 
@@ -42,26 +31,3 @@ describe 'sample' do
     }
   end
 end
-
-<<~EOF
-  void call(int n){
-    int i = 1;
-   CHECK_NUM:
-    int x = i;
-    if ( x % 3 == 0 ){
-      cout << " " << i;
-      goto END_CHECK_NUM;
-    }
-   INCLUDE3:
-    if ( x % 10 == 3 ){
-      cout << " " << i;
-      goto END_CHECK_NUM;
-    }
-    x /= 10;
-    if ( x ) goto INCLUDE3;
-   END_CHECK_NUM:
-    if ( ++i <= n ) goto CHECK_NUM;
-
-    cout << endl;
-  }
-EOF
