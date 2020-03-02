@@ -1,27 +1,24 @@
 # frozen_string_literal: true
-#
 
-def create_correct_set
-  set = []
-  %w(S H C D).each do |v|
-    1.upto(13) do |i|
-      set.push("#{v} #{i}")
+class Building
+  def initialize
+    @rooms = Array.new(3).map { Array.new(10, 0) }
+  end
+
+  attr_accessor :rooms
+
+  def move_in(f, r, v)
+    rooms[f - 1][r - 1] += v
+  end
+
+  def print_move_in_status
+    rooms.each do |f|
+      puts f.join(' ')
     end
   end
-  set
 end
 
-def func
-  n = gets.to_i
-  exists_cards = n.times.map{ gets.strip }
-
-  correct_set = create_correct_set
-
-  not_exists_cards = correct_set - exists_cards
-  not_exists_cards.each do |c|
-    puts c
-  end
-end
+def func; end
 
 describe 'sample' do
   let(:stdin) do
